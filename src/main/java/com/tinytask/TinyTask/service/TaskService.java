@@ -29,4 +29,12 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
+    public Task updateById(int id, Task task){
+        return taskRepository.update(id, task);
+    }
+
+    public Task deleteById(int id){
+        return taskRepository.delete(id);
+    }
+
 }

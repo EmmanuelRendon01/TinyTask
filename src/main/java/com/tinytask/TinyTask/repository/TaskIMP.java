@@ -18,6 +18,7 @@ public class TaskIMP implements TaskRepository{
 
     @Override
     public Task create(Task task) {
+        task.setId(db.size()+1);
         db.add(task);
         return task;
     }
@@ -36,29 +37,29 @@ public class TaskIMP implements TaskRepository{
     }
 
     @Override
-    public Boolean update(int id, Task newTask) {
-        boolean find = false;
-        for (Task task : db) {
+    public Task update(int id, Task task) {
+        for (Task existingTask  : db) {
 
-            if (task.getId() == id) {
-                task = newTask;
-                find = true;
+            if (existingTask.getId() == id) {
+                existingTask.setTitle(task.getTitle());
+                existingTask.setDescription(task.getDescription());
+                return task;
             }
         }
+        return null;
 
-        return find;
     }
 
     @Override
-    public Boolean delete(int id) {
-        boolean find = false;
+    public Task delete(int id) {
         for (int i = 0; i < db.size(); i++) {
-            if (i == id) {
+            Task currentTask = db.get(i);
+            if (currentTask.getId() == id) {
                 db.remove(i);
-                find = true;
+                return currentTask;
             }
         }
 
-        return find;
+        return null;
     }
 }

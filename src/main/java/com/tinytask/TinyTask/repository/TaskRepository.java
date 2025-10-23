@@ -9,6 +9,6 @@ public interface TaskRepository {
     List<Task> findAll();
     Task create(Task task);
     Task findById(int id);
-    Boolean update(int id, Task newTask);
-    Boolean delete(int id);
+    Task update(int id, Task newTask);
+    Task delete(int id);
 }
