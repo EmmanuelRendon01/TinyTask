@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/Task")
-@CrossOrigin(origins = "https://tinytask-16id.onrender.com")
+@CrossOrigin(origins = "https://tinytask-frontend.onrender.com/")
 public class TaskController {
 
     private final TaskService taskService;
